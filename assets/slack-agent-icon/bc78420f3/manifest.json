@@ -1,0 +1,171 @@
+{
+  "feature": "Custom Slack icon per agent (agent-swarm, feat/slack-agent-icon)",
+  "captured": "2026-10-28",
+  "before": {
+    "sha": "579257fa330cb8309f519c0e0c943a7b0e9476ac",
+    "ref": "upstream/main (temporary detached worktree, removed)"
+  },
+  "after": {
+    "sha": "a371449815c94d2e935cc4f369936ac25c585bfd",
+    "ref": "feat/slack-agent-icon",
+    "dirty": false
+  },
+  "fixture": "packages/ui-e2e seeded API per run (synthetic seed); agents e2e-lead and e2e-worker-a; UI = production build of each checkout (vite preview); Slack off",
+  "tooling": "Playwright 1.63 (repo ui-e2e fixtures) with cached chromium headless shell 1248 via PLAYWRIGHT_BROWSERS_PATH links; temporary spec and config, not committed",
+  "capture_only_font": "The capture host has no colour emoji font, so the After captures and the recording load Noto Color Emoji from Google Fonts in the page (unicode-range: emoji only). Not part of the change; real browsers use the OS emoji font.",
+  "external_images": "https://avatars.githubusercontent.com/u/9919?s=64 (working URL); https://example.invalid/missing.png (broken URL); https://placehold.co/72x72/png?text=App (S12 mocked app avatar)",
+  "states": [
+    {
+      "id": "S10-default-lead",
+      "description": "Lead agent (e2e-lead), no Slack icon set: preview 👑, hint names :crown:",
+      "files": [
+        "S10-default-lead-before.png",
+        "S10-default-lead-after.png"
+      ],
+      "capture": "page clip of the Profile tab's first card (includes portalled tooltips)",
+      "viewport": "1440x1400",
+      "theme": "dark"
+    },
+    {
+      "id": "S01-default",
+      "description": "Worker (e2e-worker-a), no Slack icon set: preview ⚙️, the same hash pick as getAgentEmoji (:gear:)",
+      "files": [
+        "S01-default-before.png",
+        "S01-default-after.png"
+      ],
+      "capture": "page clip of the Profile tab's first card (includes portalled tooltips)",
+      "viewport": "1440x1400",
+      "theme": "dark"
+    },
+    {
+      "id": "S02-emoji",
+      "description": "typed `owl`, blurred: shows `:owl:`, saved, preview 🦉",
+      "files": [
+        "S02-emoji-after.png"
+      ],
+      "capture": "page clip of the Profile tab's first card (includes portalled tooltips)",
+      "viewport": "1440x1400",
+      "theme": "dark"
+    },
+    {
+      "id": "S11-custom-emoji",
+      "description": "`:party-parrot:` (not in the map, e.g. a workspace emoji): code in a muted chip, tooltip 'Custom emoji, shown in Slack' (hovered)",
+      "files": [
+        "S11-custom-emoji-after.png"
+      ],
+      "capture": "page clip of the Profile tab's first card (includes portalled tooltips)",
+      "viewport": "1440x1400",
+      "theme": "dark"
+    },
+    {
+      "id": "S03-url-preview",
+      "description": "https image URL saved, image preview",
+      "files": [
+        "S03-url-preview-after.png"
+      ],
+      "capture": "page clip of the Profile tab's first card (includes portalled tooltips)",
+      "viewport": "1440x1400",
+      "theme": "dark"
+    },
+    {
+      "id": "S04-http-error",
+      "description": "http URL: 'Use an https URL.', no preview, not saved",
+      "files": [
+        "S04-http-error-after.png"
+      ],
+      "capture": "page clip of the Profile tab's first card (includes portalled tooltips)",
+      "viewport": "1440x1400",
+      "theme": "dark"
+    },
+    {
+      "id": "S05-broken-link",
+      "description": "https URL that does not load: 'Can't load image.'",
+      "files": [
+        "S05-broken-link-after.png"
+      ],
+      "capture": "page clip of the Profile tab's first card (includes portalled tooltips)",
+      "viewport": "1440x1400",
+      "theme": "dark"
+    },
+    {
+      "id": "S09-app-icon",
+      "description": "Slack app icon, Slack off (as in this run): neutral 'Slack app' badge",
+      "files": [
+        "S09-app-icon-after.png"
+      ],
+      "capture": "page clip of the Profile tab's first card (includes portalled tooltips)",
+      "viewport": "1440x1400",
+      "theme": "dark"
+    },
+    {
+      "id": "S12-app-icon-avatar",
+      "description": "Slack app icon with the app-icon endpoint mocked to return an avatar URL (stand-in image), as with Slack connected",
+      "files": [
+        "S12-app-icon-avatar-after.png"
+      ],
+      "capture": "page clip of the Profile tab's first card (includes portalled tooltips)",
+      "viewport": "1440x1400",
+      "theme": "dark",
+      "mocked": "GET /api/integrations/slack/app-icon fulfilled with { imageUrl: https://placehold.co/72x72/png?text=App }"
+    },
+    {
+      "id": "S06-reset",
+      "description": "'Reset to default' from the app icon: stored null, preview back to ⚙️",
+      "files": [
+        "S06-reset-after.png"
+      ],
+      "capture": "page clip of the Profile tab's first card (includes portalled tooltips)",
+      "viewport": "1440x1400",
+      "theme": "dark"
+    },
+    {
+      "id": "S07-dark-1440",
+      "description": "page, scrolled to the end of the Profile card (After: https image set)",
+      "files": [
+        "S07-dark-1440-before.png",
+        "S07-dark-1440-after.png"
+      ],
+      "capture": "viewport screenshot",
+      "viewport": "1440x900",
+      "theme": "dark"
+    },
+    {
+      "id": "S08-light-390",
+      "description": "page, scrolled to the end of the Profile card (After: https image set)",
+      "files": [
+        "S08-light-390-before.png",
+        "S08-light-390-after.png"
+      ],
+      "capture": "viewport screenshot",
+      "viewport": "390x844",
+      "theme": "light"
+    }
+  ],
+  "before_gaps": "Only S01, S10, S07 and S08 have a Before: the setting does not exist on main",
+  "recordings": [
+    {
+      "files": [
+        "flow.mp4",
+        "flow.gif"
+      ],
+      "phase": "after",
+      "viewport": "960x600",
+      "theme": "dark",
+      "capture": "Playwright recordVideo + record-cursor.mjs (showCursor, glideClick); convert.sh --from 1.5",
+      "duration_s": 18.5,
+      "states": [
+        "S01-default",
+        "S02-emoji",
+        "S04-http-error",
+        "S03-url-preview",
+        "S09-app-icon",
+        "S06-reset"
+      ],
+      "steps": "default preview ⚙️ -> type `owl`, blur: `:owl:` 🦉 -> http URL: error, no preview -> https URL: image -> Use Slack app icon: 'Slack app' badge -> Reset: ⚙️",
+      "sizes_bytes": {
+        "flow.mp4": 218022,
+        "flow.gif": 1702128
+      }
+    }
+  ]
+}
