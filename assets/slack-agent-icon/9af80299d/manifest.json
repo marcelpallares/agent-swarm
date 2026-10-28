@@ -1,0 +1,127 @@
+{
+  "feature": "Custom Slack icon per agent (agent-swarm, feat/slack-agent-icon)",
+  "captured": "2026-10-28",
+  "before": {
+    "sha": "dd3350c35218a8e3c7c974c7dbdcc9d0f11c0339",
+    "ref": "upstream/main (temporary detached worktree, removed)"
+  },
+  "after": {
+    "sha": "9af80299da6291459421dcd3413473c11fbdb567",
+    "ref": "feat/slack-agent-icon",
+    "dirty": false
+  },
+  "fixture": "packages/ui-e2e seeded API per run (synthetic seed); agent e2e-worker-a; UI = production build of each checkout (vite preview)",
+  "tooling": "Playwright 1.63 (repo ui-e2e fixtures) with cached chromium headless shell 1248 via PLAYWRIGHT_BROWSERS_PATH links; temporary spec and config, not committed",
+  "external_image": "https://avatars.githubusercontent.com/u/9919?s=64 (working URL); https://example.invalid/missing.png (broken URL)",
+  "states": [
+    {
+      "id": "S01-default",
+      "description": "Profile tab, no Slack icon set",
+      "files": [
+        "S01-default-before.png",
+        "S01-default-after.png"
+      ],
+      "capture": "element screenshot of the Profile tab's first card",
+      "viewport": "1440x1400",
+      "theme": "dark"
+    },
+    {
+      "id": "S02-emoji",
+      "description": "typed `owl`, blurred: shows `:owl:`, saved",
+      "files": [
+        "S02-emoji-after.png"
+      ],
+      "capture": "element screenshot of the Profile tab's first card",
+      "viewport": "1440x1400",
+      "theme": "dark"
+    },
+    {
+      "id": "S03-url-preview",
+      "description": "https image URL saved, 20px preview",
+      "files": [
+        "S03-url-preview-after.png"
+      ],
+      "capture": "element screenshot of the Profile tab's first card",
+      "viewport": "1440x1400",
+      "theme": "dark"
+    },
+    {
+      "id": "S04-http-error",
+      "description": "http URL: 'Use an https URL.', not saved",
+      "files": [
+        "S04-http-error-after.png"
+      ],
+      "capture": "element screenshot of the Profile tab's first card",
+      "viewport": "1440x1400",
+      "theme": "dark"
+    },
+    {
+      "id": "S05-broken-link",
+      "description": "https URL that does not load: 'Can't load image.'",
+      "files": [
+        "S05-broken-link-after.png"
+      ],
+      "capture": "element screenshot of the Profile tab's first card",
+      "viewport": "1440x1400",
+      "theme": "dark"
+    },
+    {
+      "id": "S06-reset",
+      "description": "after 'Reset to default': empty, stored null",
+      "files": [
+        "S06-reset-after.png"
+      ],
+      "capture": "element screenshot of the Profile tab's first card",
+      "viewport": "1440x1400",
+      "theme": "dark"
+    },
+    {
+      "id": "S07-dark-1440",
+      "description": "page, scrolled to the end of the Profile card (After: https image set)",
+      "files": [
+        "S07-dark-1440-before.png",
+        "S07-dark-1440-after.png"
+      ],
+      "capture": "viewport screenshot",
+      "viewport": "1440x900",
+      "theme": "dark"
+    },
+    {
+      "id": "S08-light-390",
+      "description": "page, scrolled to the end of the Profile card (After: https image set)",
+      "files": [
+        "S08-light-390-before.png",
+        "S08-light-390-after.png"
+      ],
+      "capture": "viewport screenshot",
+      "viewport": "390x844",
+      "theme": "light"
+    }
+  ],
+  "before_gaps": "S02-S06 have no Before: the setting does not exist on main",
+  "recordings": [
+    {
+      "files": [
+        "flow.mp4",
+        "flow.gif"
+      ],
+      "phase": "after",
+      "viewport": "1280x800",
+      "theme": "dark",
+      "capture": "Playwright recordVideo + record-cursor.mjs (showCursor, glideClick); convert.sh --from 1",
+      "duration_s": 18,
+      "states": [
+        "S01-default",
+        "S02-emoji",
+        "S04-http-error",
+        "S03-url-preview",
+        "S06-reset"
+      ],
+      "steps": "type `owl` -> blur shows `:owl:` saved -> replace with http URL (error) -> https URL (preview) -> Reset",
+      "sizes_bytes": {
+        "flow.mp4": 168394,
+        "flow.gif": 1487681
+      }
+    }
+  ]
+}
